@@ -1,6 +1,9 @@
 import React from 'react';
+import {useState} from "@types/react";
 
 const Sorting = () => {
+    const categories = ['Все', 'Мясные', 'Вегетерианские', 'Гриль', 'Острые', 'Закрытые'];
+    const [activeCategory, setActiveCategory] = useState(0);
     return (
         <div className="sorting">
             <div className="categories">
