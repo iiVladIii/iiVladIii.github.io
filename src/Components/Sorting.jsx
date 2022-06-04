@@ -1,5 +1,4 @@
-import React from 'react';
-import {useState} from "@types/react";
+import {React, useState } from 'react';
 
 const Sorting = () => {
     const categories = ['Все', 'Мясные', 'Вегетерианские', 'Гриль', 'Острые', 'Закрытые'];
