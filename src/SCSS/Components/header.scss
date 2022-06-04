@@ -1,0 +1,40 @@
+header {
+  width: 100%;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1.5vw;
+
+  .logo {
+    width: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+
+    &__img {
+      height: 55px;
+      width: 55px;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    &__text {
+      margin-left: 5%;
+      line-height: 26px;
+      font-size: 24px;
+      text-transform: uppercase;
+
+      span {
+        font-size: 16px;
+      }
+    }
+
+    &__info {
+      background-color: #FE5F1E;
+    }
+  }
+
+}
