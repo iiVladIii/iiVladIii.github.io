@@ -1,0 +1,21 @@
+.sorting {
+
+  .categories {
+
+    ul {
+      display: flex;
+    }
+    li {
+      list-style-type: none;
+      font-size: 18px;
+      background-color: #F9F9F9;
+      margin-left: 2%;
+      padding: 0.8vw;
+      border-radius: 20px;
+      &.active {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+}

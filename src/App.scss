@@ -1,4 +1,5 @@
 @import "SCSS/Components/header";
+@import "SCSS/Components/sorting";
 
 .App {
   width: 90%;
@@ -8,5 +9,7 @@
   margin: 2% auto;
   background-color: #ffff;
   border-radius: 20px;
-
+}
+.content {
+  padding: 1.5vw;
 }
