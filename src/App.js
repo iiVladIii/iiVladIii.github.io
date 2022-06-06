@@ -10,16 +10,32 @@ import PizzaCard from "./Components/PizzaCard";
 
 function App() {
     const [pizzas, setPizzas] = useState([]);
-    const [typeOfPizzas, setTypeOfPizzas] = useState([]);
+    const [page, setPage] = useState(1)
+    const [maxPage, setMaxPage] = useState()
     const [fetchPizzas, isLoading, error] = useFetching(async () => {
-        const response = await axios.get('https://629bd467e9358232f7529957.mockapi.io/items');
+        const checkResponse = await axios.get('https://629bd467e9358232f7529957.mockapi.io/items');
+        setMaxPage(Math.ceil(checkResponse.data.length/8))
+        const response = await axios.get(`https://629bd467e9358232f7529957.mockapi.io/items?page=${page}&limit=8`);
         setPizzas(response.data);
     });
-
+    const newPage = (index) => {
+        switch (index) {
+            case 1:
+                if (page < maxPage) {
+                    setPage(page + 1)
+                }
+                break;
+            case -1:
+                if (page > 1) {
+                    setPage(page - 1)
+                }
+                break;
+        }
+    }
     const title = 'Все пиццы';
     useEffect(() => {
         fetchPizzas();
-    }, []);
+    }, [page]);
 
 
     return (
@@ -35,7 +51,8 @@ function App() {
                         )}
                     </div>
                 }
-                //pagination
+                <button onClick={()=> {newPage(-1)}}>prev</button>
+                <button onClick={()=> {newPage(1)}}>next</button>
             </div>
         </div>
     );
