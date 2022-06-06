@@ -52,6 +52,7 @@
     }
 
     &-size {
+      cursor: pointer;
       width: 31%;
       @extend %templ;
       &.active {

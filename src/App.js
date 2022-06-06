@@ -1,4 +1,5 @@
 import './App.scss';
+import React from "react";
 import Header from "./Components/Header";
 import Sorting from "./Components/Sorting";
 import {useEffect, useState} from "react";

@@ -47,6 +47,7 @@ const PizzaCard = ({pizza}) => {
                     break;
             }
         }
+        console.log(activeSize);
     }
 
     const activeTypeBtn = (index) => {
@@ -108,7 +109,7 @@ const PizzaCard = ({pizza}) => {
         <div className="card" key={pizza.id}>
 
             <div className="card__img">
-                <img src={pizza.imageUrl} alt=""/>
+                <img src={pizza.imageUrl} alt="pizza-picture"/>
             </div>
             <div className="card__title"><h3>{pizza.title}</h3></div>
             <div className="card__menu">
