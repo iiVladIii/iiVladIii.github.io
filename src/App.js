@@ -1,11 +1,5 @@
 import './App.scss';
 import React, {createContext, useEffect, useState} from "react";
-import Header from "./Components/Header";
-import Sorting from "./Components/Sorting";
-import HomePage from "./Pages/HomePage";
-import {useFetching} from "./hooks/useFetching";
-import axios from "axios";
-import CartPage from "./Pages/CartPage";
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./Components/AppRouter";
 
@@ -42,6 +36,7 @@ function App() {
     // console.log(pizzasInCart);
     const [cartPrice, setCartPrice] = useState(0)
     const [cartCounter, setCartCounter] = useState(0)
+
     return (
         <div className="App">
             <cartContext.Provider value={{pizzasInCart, setPizzasInCart, cartPrice, setCartPrice, cartCounter, setCartCounter}}>

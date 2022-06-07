@@ -8,7 +8,7 @@ const CartPage = () => {
     const navigate = useNavigate();
     const {pizzasInCart, setPizzasInCart} = useContext(cartContext)
 
-    console.log(pizzasInCart);
+    // console.log(pizzasInCart);
     return (
         <div className="cart">
             <Header phrase={'Самая реактивная пицца'}/>

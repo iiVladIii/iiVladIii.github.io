@@ -11,7 +11,7 @@ import {useContext} from "react";
 import {cartContext} from "../App";
 
 const HomePage = () => {
-    const { cartCounter, cartPrice } = useContext(cartContext)
+    // const { cartCounter, cartPrice } = useContext(cartContext)
 
 
 
@@ -44,8 +44,8 @@ const HomePage = () => {
     return (
         <div className={'home-wrap'}>
             <Header
-                cartPrice={cartPrice}
-                cartCounter={cartCounter}
+                cartPrice={0}
+                cartCounter={0}
                 phrase={'Самая вкусная пицца во вселенной'}
             />
             <Sorting/>

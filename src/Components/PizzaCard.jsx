@@ -1,17 +1,9 @@
 import React, {useEffect} from 'react';
 import {useState} from "react";
-import {useContext} from "react";
-import {cartContext} from "../App";
+
+
 
 const PizzaCard = ({pizza}) => {
-    const {
-        pizzasInCart,
-        setPizzasInCart,
-        cartCounter,
-        setCartCounter,
-        cartPrice,
-        setCartPrice
-    } = useContext(cartContext);
 
     const [pizzaInCart, setPizzaInCart] = useState({
         id: 0,
@@ -22,7 +14,6 @@ const PizzaCard = ({pizza}) => {
         type: 0,
         count: 0
     });
-
     const addToCart = (pizza) => {
         let size = 0;
         switch (activeSize) {
@@ -36,18 +27,19 @@ const PizzaCard = ({pizza}) => {
                 size = 40;
                 break;
         }
-        setCartCounter(cartCounter + 1);
-        setCartPrice(cartPrice + pizza.price);
-        setPizzaInCart({
-            id: pizza.id,
-            imageUrl: pizza.imageUrl,
-            price: pizza.price,
-            size: size,
-            title: pizza.title,
-            type: activeType,
-            count: pizzaInCart.count + 1
-        });
-        setPizzasInCart([...pizzasInCart, pizzaInCart]);
+        // setCartCounter(cartCounter + 1);
+        // setCartPrice(cartPrice + pizza.price);
+        // setPizzaInCart({
+        //     id: pizza.id,
+        //     imageUrl: pizza.imageUrl,
+        //     price: pizza.price,
+        //     size: size,
+        //     title: pizza.title,
+        //     type: activeType,
+        //     count: pizzaInCart.count + 1
+        // });
+        // setPizzasInCart([...pizzasInCart, pizzaInCart]);
+
     };
 
     const [firstTypeStyle, setFirstTypeStyle] = useState(['card__menu-type']);
