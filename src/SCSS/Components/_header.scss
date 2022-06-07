@@ -4,14 +4,14 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 1.5vw;
-
+  padding-bottom: 1.5vw;
   .logo {
     width: 50%;
     display: flex;
     flex-wrap: nowrap;
 
     &__img {
+      cursor: pointer;
       height: 55px;
       width: 55px;
 
@@ -22,6 +22,7 @@ header {
     }
 
     &__text {
+      cursor: pointer;
       margin-left: 5%;
       line-height: 26px;
       font-size: 24px;
@@ -32,9 +33,46 @@ header {
       }
     }
 
-    &__info {
-      background-color: #FE5F1E;
+  }
+  .info {
+    background-color: #FE5F1E;
+    width: 15%;
+    border-radius: 50px;
+    display: flex;
+    flex-wrap: nowrap;
+    //position: relative;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    hr {
+      width: 0.5%;
+      border: none;
+      background-color: white;
+      height: 65%;
+    }
+    //%templCart {
+    //  width: 50%;
+    //}
+    &__cart-price {
+      padding-left: 10%;
+      width: 49.5%;
+      //background-color: #b9aeab;
+    }
+    &__cart-btn {
+      width: 49.5%;
+      position: relative;
+      color: white;
+      text-decoration: none;
+      &:hover {
+        opacity: .8;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 15%;
+      }
+      //background-color: #ded0cc;
     }
   }
-
 }

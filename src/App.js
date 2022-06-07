@@ -1,59 +1,54 @@
 import './App.scss';
-import React from "react";
+import React, {createContext, useEffect, useState} from "react";
 import Header from "./Components/Header";
 import Sorting from "./Components/Sorting";
-import {useEffect, useState} from "react";
+import HomePage from "./Pages/HomePage";
 import {useFetching} from "./hooks/useFetching";
 import axios from "axios";
-import Loader from "./Components/Loader/Loader";
-import PizzaCard from "./Components/PizzaCard";
+import CartPage from "./Pages/CartPage";
+import {BrowserRouter} from "react-router-dom";
+import AppRouter from "./Components/AppRouter";
+
+export const cartContext = createContext();
 
 function App() {
-    const [pizzas, setPizzas] = useState([]);
-    const [page, setPage] = useState(1)
-    const [maxPage, setMaxPage] = useState()
-    const [fetchPizzas, isLoading, error] = useFetching(async () => {
-        const checkResponse = await axios.get('https://629bd467e9358232f7529957.mockapi.io/items');
-        setMaxPage(Math.ceil(checkResponse.data.length/8))
-        const response = await axios.get(`https://629bd467e9358232f7529957.mockapi.io/items?page=${page}&limit=8`);
-        setPizzas(response.data);
-    });
-    const newPage = (index) => {
-        switch (index) {
-            case 1:
-                if (page < maxPage) {
-                    setPage(page + 1)
-                }
-                break;
-            case -1:
-                if (page > 1) {
-                    setPage(page - 1)
-                }
-                break;
-        }
-    }
-    const title = 'Все пиццы';
-    useEffect(() => {
-        fetchPizzas();
-    }, [page]);
-
-
+    const [pizzasInCart, setPizzasInCart] = useState([
+        {
+            category: 0,
+            id: "0",
+            imageUrl: "https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg",
+            price: 803,
+            rating: 4,
+            size: 26,
+            title: "Пепперони Фреш с перцем",
+            type: 1,
+            count: 2
+        },
+        {
+            category: 0,
+            id: "1",
+            imageUrl: "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/2ffc31bb-132c-4c99-b894-53f7107a1441.jpg",
+            price: 245,
+            rating: 6,
+            size: 40,
+            title: "Сырная",
+            type: 0,
+            count: 1
+        },
+    ]);
+    useEffect(()=> {
+        console.log(pizzasInCart);
+    }, [pizzasInCart])
+    // console.log(pizzasInCart);
+    const [cartPrice, setCartPrice] = useState(0)
+    const [cartCounter, setCartCounter] = useState(0)
     return (
         <div className="App">
-            <Header/>
-            <div className="content">
-                <Sorting/>
-                {isLoading
-                    ? <Loader/>
-                    : <div className="pizzas">
-                        {pizzas.map((pizza) =>
-                            <PizzaCard pizza={pizza} key={pizza.id}/>
-                        )}
-                    </div>
-                }
-                <button onClick={()=> {newPage(-1)}}>prev</button>
-                <button onClick={()=> {newPage(1)}}>next</button>
-            </div>
+            <cartContext.Provider value={{pizzasInCart, setPizzasInCart, cartPrice, setCartPrice, cartCounter, setCartCounter}}>
+                <BrowserRouter>
+                    <AppRouter/>
+                </BrowserRouter>
+            </cartContext.Provider>
         </div>
     );
 }

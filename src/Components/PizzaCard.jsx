@@ -1,7 +1,55 @@
 import React, {useEffect} from 'react';
 import {useState} from "react";
+import {useContext} from "react";
+import {cartContext} from "../App";
 
 const PizzaCard = ({pizza}) => {
+    const {
+        pizzasInCart,
+        setPizzasInCart,
+        cartCounter,
+        setCartCounter,
+        cartPrice,
+        setCartPrice
+    } = useContext(cartContext);
+
+    const [pizzaInCart, setPizzaInCart] = useState({
+        id: 0,
+        imageUrl: '',
+        price: 0,
+        size: 0,
+        title: '',
+        type: 0,
+        count: 0
+    });
+
+    const addToCart = (pizza) => {
+        let size = 0;
+        switch (activeSize) {
+            case 0:
+                size = 26;
+                break;
+            case 1:
+                size = 30;
+                break;
+            case 2:
+                size = 40;
+                break;
+        }
+        setCartCounter(cartCounter + 1);
+        setCartPrice(cartPrice + pizza.price);
+        setPizzaInCart({
+            id: pizza.id,
+            imageUrl: pizza.imageUrl,
+            price: pizza.price,
+            size: size,
+            title: pizza.title,
+            type: activeType,
+            count: pizzaInCart.count + 1
+        });
+        setPizzasInCart([...pizzasInCart, pizzaInCart]);
+    };
+
     const [firstTypeStyle, setFirstTypeStyle] = useState(['card__menu-type']);
     const [secondTypeStyle, setSecondTypeStyle] = useState(['card__menu-type']);
     const [firstSizeStyle, setFirstSizeStyle] = useState(['card__menu-size']);
@@ -12,7 +60,6 @@ const PizzaCard = ({pizza}) => {
 
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
-
     const checkTypes = () => {
         if (pizza.types[0] === 0) {
             setFirstTypeStyle([...firstTypeStyle, checkedStyle]);
@@ -131,7 +178,6 @@ const PizzaCard = ({pizza}) => {
 
     return (
         <div className="card" key={pizza.id}>
-
             <div className="card__img">
                 <img src={pizza.imageUrl} alt="pizza-picture"/>
             </div>
@@ -145,7 +191,7 @@ const PizzaCard = ({pizza}) => {
             </div>
             <div className="card__price">
                 <span>от {pizza.price} ₽</span>
-                <button>hi</button>
+                <div onClick={() => addToCart(pizza)}>Добавить</div>
             </div>
         </div>
     );

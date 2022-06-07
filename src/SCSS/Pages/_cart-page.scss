@@ -1,0 +1,161 @@
+%templBtn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: #FE5F1E 1px solid;
+  border-radius: 50px;
+  font-size: 20px;
+}
+.cart {
+  width: 100%;
+  &__wrap {
+    margin: 0 auto;
+    width: 60%;
+
+    .info {
+      cursor: default;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      border-bottom: #B6B6B6 1px solid;
+      padding: 4vh 0;
+
+      h2 {
+        font-size: 32px;
+        margin-left: 10%;
+      }
+
+      .cart__title {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+      }
+      .cart__clear {
+        cursor: pointer;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        opacity: .7;
+        span {
+          padding: 8px;
+          color: #B6B6B6;
+        }
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .pizzas-list {
+      cursor: default;
+      //margin: 5vh 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .pizza-cards {
+        //margin: 1.5vh 0;
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        border-bottom: #B6B6B6 1px solid;
+        //border-top: #B6B6B6 1px solid;
+        padding: 2% 0;
+
+        img {
+          height: 100px;
+          width: 100px;
+        }
+
+        .pizza {
+          position: relative;
+          &__title {
+            margin-left: 2.5%;
+            display: flex;
+            flex-direction: column;
+            width: 35%;
+
+            span {
+              color: #B6B6B6;
+            }
+          }
+
+          &__counter {
+            margin-left: 5%;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            width: 20%;
+
+            &-btn {
+              @extend %templBtn;
+              color: #FE5F1E;
+              margin: 0 10%;
+
+              &:hover {
+                background-color: #FE5F1E;
+                color: white;
+              }
+            }
+          }
+
+          &__price {
+            margin-left: 5%;
+            font-weight: 700;
+          }
+
+          &__delete {
+            margin-left: auto;
+
+            @extend %templBtn;
+            position: relative;
+            border: #B6B6B6 1px solid;
+            font-size: 30px;
+            opacity: .7;
+            color: #B6B6B6;
+            span {
+              position: absolute;
+              top: -26%;
+              left: 15%;
+              transform: rotate(-45deg);
+            }
+            &:hover {
+              opacity: 1;
+              color: white;
+              background-color: #B6B6B6;
+            }
+          }
+        }
+      }
+    }
+    .empty-cart {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin-top: 10%;
+      align-items: center;
+      p {
+        color: #B6B6B6;
+      }
+      img {
+        margin: 6% 0;
+        width: 50%;
+      }
+      .back-btn {
+        background-color: #282828;
+        color: white;
+        border-radius: 50px;
+        width: 25%;
+        line-height: 50px;
+        &:hover {
+          opacity: .8;
+        }
+      }
+    }
+  }
+}
