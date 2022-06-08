@@ -7,19 +7,7 @@ import {addNewItem} from "../store/cartSlice";
 const PizzaCard = ({pizza}) => {
     const cartItems = useSelector(state => state.cart.cartItems);
     const dispatch = useDispatch();
-    const [count, setCount] = useState(0);
-    const [prevSize, setPrevSize] = useState();
-    const [prevType, setPrevType] = useState();
 
-    // const selectedPizza = {
-    //     id: 0,
-    //     imageUrl: '',
-    //     price: 0,
-    //     size: 0,
-    //     title: '',
-    //     type: 0,
-    //     count: 0
-    // };
     const addToCart = (pizza) => {
         let size = 0;
         switch (activeSize) {
@@ -41,8 +29,6 @@ const PizzaCard = ({pizza}) => {
             title: pizza.title,
             type: activeType,
         };
-        // setPrevSize(pizza.type);
-        // setPrevSize(size);
         dispatch(addNewItem(selectedPizza));
         console.log(cartItems);
     };
@@ -68,6 +54,7 @@ const PizzaCard = ({pizza}) => {
 
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
+
     const checkTypes = () => {
         if (pizza.types[0] === 0) {
             setFirstTypeStyle([...firstTypeStyle, checkedStyle]);
