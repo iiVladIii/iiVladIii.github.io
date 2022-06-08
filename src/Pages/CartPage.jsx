@@ -27,8 +27,8 @@ const CartPage = () => {
                             <img src="./img/trash-icon.svg" alt=""/><span> Очистить корзину</span></div>
                     </div>
                     <div className="pizzas-list">
-                        {cartItems.map((pizza) =>
-                            <div className="pizza-cards" key={pizza.id}>
+                        {cartItems.map((pizza, index) =>
+                            <div className="pizza-cards" key={index}>
                                 <img src={pizza.imageUrl} alt=""/>
                                 <div className="pizza__title">
                                     <h4>{pizza.title}</h4>

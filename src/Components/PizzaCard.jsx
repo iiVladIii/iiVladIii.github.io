@@ -30,7 +30,6 @@ const PizzaCard = ({pizza}) => {
             type: activeType,
         };
         dispatch(addNewItem(selectedPizza));
-        console.log(cartItems);
     };
     const quantityInCart = (item) => {
         let count = 0;
