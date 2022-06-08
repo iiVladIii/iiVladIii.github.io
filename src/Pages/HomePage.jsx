@@ -8,11 +8,14 @@ import axios from "axios";
 import Sorting from "../Components/Sorting";
 import Header from "../Components/Header";
 
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {cartInfo} from "../store/cartSlice";
+
 
 const HomePage = () => {
     const cartCounter = useSelector(state => state.cart.cartCounter)
     const cartPrice = useSelector(state => state.cart.cartPrice)
+    const dispatch = useDispatch();
 
     const [pizzas, setPizzas] = useState([]);
     const [page, setPage] = useState(1);
@@ -39,6 +42,7 @@ const HomePage = () => {
     });
     useEffect(() => {
         fetchPizzas();
+        dispatch(cartInfo())
     }, [page]);
 
 
