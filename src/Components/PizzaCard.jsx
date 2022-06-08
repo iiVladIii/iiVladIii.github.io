@@ -1,19 +1,25 @@
 import React, {useEffect} from 'react';
 import {useState} from "react";
-
+import {useDispatch, useSelector} from "react-redux";
+import {addNewItem} from "../store/cartSlice";
 
 
 const PizzaCard = ({pizza}) => {
+    const cartItems = useSelector(state => state.cart.cartItems);
+    const dispatch = useDispatch();
+    const [count, setCount] = useState(0);
+    const [prevSize, setPrevSize] = useState();
+    const [prevType, setPrevType] = useState();
 
-    const [pizzaInCart, setPizzaInCart] = useState({
-        id: 0,
-        imageUrl: '',
-        price: 0,
-        size: 0,
-        title: '',
-        type: 0,
-        count: 0
-    });
+    // const selectedPizza = {
+    //     id: 0,
+    //     imageUrl: '',
+    //     price: 0,
+    //     size: 0,
+    //     title: '',
+    //     type: 0,
+    //     count: 0
+    // };
     const addToCart = (pizza) => {
         let size = 0;
         switch (activeSize) {
@@ -27,19 +33,29 @@ const PizzaCard = ({pizza}) => {
                 size = 40;
                 break;
         }
-        // setCartCounter(cartCounter + 1);
-        // setCartPrice(cartPrice + pizza.price);
-        // setPizzaInCart({
-        //     id: pizza.id,
-        //     imageUrl: pizza.imageUrl,
-        //     price: pizza.price,
-        //     size: size,
-        //     title: pizza.title,
-        //     type: activeType,
-        //     count: pizzaInCart.count + 1
-        // });
-        // setPizzasInCart([...pizzasInCart, pizzaInCart]);
-
+        const selectedPizza = {
+            id: pizza.id,
+            imageUrl: pizza.imageUrl,
+            price: pizza.price,
+            size: size,
+            title: pizza.title,
+            type: activeType,
+        };
+        // setPrevSize(pizza.type);
+        // setPrevSize(size);
+        dispatch(addNewItem(selectedPizza));
+        console.log(cartItems);
+    };
+    const quantityInCart = (item) => {
+        let count = 0;
+        cartItems.map((element) => {
+            if (element.id === item.id) {
+                const c = element.count;
+                count = count + element.count;
+            }
+        });
+        let variable = count !== 0 ? count : null;
+        return variable;
     };
 
     const [firstTypeStyle, setFirstTypeStyle] = useState(['card__menu-type']);
@@ -183,7 +199,8 @@ const PizzaCard = ({pizza}) => {
             </div>
             <div className="card__price">
                 <span>от {pizza.price} ₽</span>
-                <div onClick={() => addToCart(pizza)}>Добавить</div>
+                <div
+                    onClick={() => addToCart(pizza)}>Добавить {quantityInCart(pizza) ? quantityInCart(pizza) : null}</div>
             </div>
         </div>
     );

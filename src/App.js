@@ -15,7 +15,7 @@ function App() {
             rating: 4,
             size: 26,
             title: "Пепперони Фреш с перцем",
-            type: 1,
+            type: 0,
             count: 2
         },
         {
@@ -30,16 +30,11 @@ function App() {
             count: 1
         },
     ]);
-    useEffect(()=> {
-        console.log(pizzasInCart);
-    }, [pizzasInCart])
-    // console.log(pizzasInCart);
-    const [cartPrice, setCartPrice] = useState(0)
-    const [cartCounter, setCartCounter] = useState(0)
+
 
     return (
         <div className="App">
-            <cartContext.Provider value={{pizzasInCart, setPizzasInCart, cartPrice, setCartPrice, cartCounter, setCartCounter}}>
+            <cartContext.Provider value={{pizzasInCart, setPizzasInCart}}>
                 <BrowserRouter>
                     <AppRouter/>
                 </BrowserRouter>

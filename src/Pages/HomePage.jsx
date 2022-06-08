@@ -7,13 +7,12 @@ import {useFetching} from "../hooks/useFetching";
 import axios from "axios";
 import Sorting from "../Components/Sorting";
 import Header from "../Components/Header";
-import {useContext} from "react";
-import {cartContext} from "../App";
+
+import {useSelector} from 'react-redux';
 
 const HomePage = () => {
-    // const { cartCounter, cartPrice } = useContext(cartContext)
-
-
+    const cartCounter = useSelector(state => state.cart.cartCounter)
+    const cartPrice = useSelector(state => state.cart.cartPrice)
 
     const [pizzas, setPizzas] = useState([]);
     const [page, setPage] = useState(1);
@@ -41,11 +40,13 @@ const HomePage = () => {
     useEffect(() => {
         fetchPizzas();
     }, [page]);
+
+
     return (
         <div className={'home-wrap'}>
             <Header
-                cartPrice={0}
-                cartCounter={0}
+                cartPrice={cartPrice}
+                cartCounter={cartCounter}
                 phrase={'Самая вкусная пицца во вселенной'}
             />
             <Sorting/>
