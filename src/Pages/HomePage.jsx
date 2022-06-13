@@ -61,6 +61,7 @@ const HomePage = () => {
     };
 
     const newPage = (index) => {
+        console.log('page');
         switch (index) {
             case 1:
                 if (page < maxPage) {
@@ -87,7 +88,7 @@ const HomePage = () => {
 
     useMemo(() => {
         fetchPizzas();
-    }, [category, sortValue]);
+    }, [category, sortValue, page]);
 
 
     return (

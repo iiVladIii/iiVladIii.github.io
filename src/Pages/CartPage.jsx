@@ -1,18 +1,27 @@
+import React from "react";
 import Header from "../Components/Header";
-import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {increment, decrement, clearCart, removeItem} from "../store/cartSlice";
+import {cartInfo, clearCart} from "../store/cartSlice";
+import EmptyCart from "../Components/EmptyCart";
+import CartPizzaList from "../Components/CartPizzaList";
+import {useNavigate} from "react-router-dom";
 
 const CartPage = () => {
-    const navigate = useNavigate();
     const cartItems = useSelector(state => state.cart.cartItems);
+    const cartCounter = useSelector(state => state.cart.cartCounter)
+    const cartPrice = useSelector(state => state.cart.cartPrice)
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+
     const clearCartConfirm = () => {
-        // let variable = confirm('Очистить корзину?');
         if (window.confirm('Очистить корзину?')) {
             dispatch(clearCart())
         };
     };
+
+    const updateInfo = () => {
+        dispatch(cartInfo())
+    }
     return (
         <div className="cart">
             <Header phrase={'Самая реактивная пицца'}/>
@@ -26,36 +35,13 @@ const CartPage = () => {
                         <div className="cart__clear" onClick={() => clearCartConfirm()}>
                             <img src="./img/trash-icon.svg" alt=""/><span> Очистить корзину</span></div>
                     </div>
-                    <div className="pizzas-list">
-                        {cartItems.map((pizza, index) =>
-                            <div className="pizza-cards" key={index}>
-                                <img src={pizza.imageUrl} alt=""/>
-                                <div className="pizza__title">
-                                    <h4>{pizza.title}</h4>
-                                    <span>{pizza.type === 0 ? 'тонкое ' : 'толстое '} тесто, {pizza.size} см.</span>
-                                </div>
-                                <div className="pizza__counter">
-                                    <div className="pizza__counter-btn" onClick={() => dispatch(decrement(pizza))}>-
-                                    </div>
-                                    {pizza.count}
-                                    <div className="pizza__counter-btn" onClick={() => dispatch(increment(pizza))}>+
-                                    </div>
-                                </div>
-                                <div className="pizza__price">{pizza.price * pizza.count} ₽</div>
-                                <div className="pizza__delete" onClick={()=> dispatch(removeItem(pizza))}><span>+</span></div>
-                            </div>
-                        )}
+                    <CartPizzaList updateInfo={updateInfo}/>
+                    <div className="total">
+                        <div className={'total__count'}>Всего пицц: <span>{cartCounter} шт.</span></div>
+                        <div className={'total__price'}>Сумма заказа: <span>{cartPrice} ₽</span> </div>
                     </div>
                 </div>
-                : <div className="cart__wrap">
-                    <div className="empty-cart">
-                        <h1>Корзина пустая 😕</h1>
-                        <p>Вероятней всего, вы не заказывали ещё пиццу.</p>
-                        <p>Для того, чтобы заказать пиццу, перейди на главную страницу.</p>
-                        <img src="./img/empty-cart.png" alt="empty-cart-picture"/>
-                        <div className="back-btn" onClick={() => navigate('/main')}>Вернуться назад</div>
-                    </div>
-                </div>
+                : <EmptyCart/>
             }
         </div>
     );

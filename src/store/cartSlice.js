@@ -48,6 +48,7 @@ const cartSlice = createSlice({
                     ...state.cartItems[index],
                     count: item.count + 1
                 };
+                // state.cartCounter = state.cartCounter + 1;
             },
             decrement(state, action) {
                 const item = action.payload;
@@ -56,12 +57,13 @@ const cartSlice = createSlice({
                     ...state.cartItems[index],
                     count: item.count - 1
                 };
-                console.log(item.count);
+                // console.log(item.count);
                 if (item.count === 1) {
                     console.log('1');
                     state.cartItems.splice(index, 1);
                 }
-                state.itemCount = state.itemCount - 1;
+                // state.itemCount = state.itemCount - 1;
+                // state.cartCounter = state.cartCounter - 1;
             },
             clearCart(state, action) {
                 state.cartItems = []
@@ -75,6 +77,7 @@ const cartSlice = createSlice({
                 });
                 state.cartCounter = count;
                 state.cartPrice = price
+                console.log(count);
             },
             removeItem(state, action) {
                 const item = action.payload
