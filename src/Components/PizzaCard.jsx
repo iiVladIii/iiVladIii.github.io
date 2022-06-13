@@ -2,10 +2,10 @@ import React, {useEffect} from 'react';
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addNewItem} from "../store/cartSlice";
+import CountBtn from "./BtnWithCounter/CountBtn";
 
 
 const PizzaCard = ({pizza}) => {
-    const cartItems = useSelector(state => state.cart.cartItems);
     const dispatch = useDispatch();
 
     const addToCart = (pizza) => {
@@ -30,17 +30,6 @@ const PizzaCard = ({pizza}) => {
             type: activeType,
         };
         dispatch(addNewItem(selectedPizza));
-    };
-    const quantityInCart = (item) => {
-        let count = 0;
-        cartItems.map((element) => {
-            if (element.id === item.id) {
-                const c = element.count;
-                count = count + element.count;
-            }
-        });
-        let variable = count !== 0 ? count : null;
-        return variable;
     };
 
     const [firstTypeStyle, setFirstTypeStyle] = useState(['card__menu-type']);
@@ -185,8 +174,7 @@ const PizzaCard = ({pizza}) => {
             </div>
             <div className="card__price">
                 <span>от {pizza.price} ₽</span>
-                <div
-                    onClick={() => addToCart(pizza)}>Добавить {quantityInCart(pizza) ? quantityInCart(pizza) : null}</div>
+                <CountBtn addToCart={addToCart} pizza={pizza}>Добавить</CountBtn>
             </div>
         </div>
     );

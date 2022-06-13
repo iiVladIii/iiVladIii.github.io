@@ -1,0 +1,48 @@
+.popup {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.1);
+  //position: absolute;
+  //display: flex;
+  //align-items: center;
+
+  .popupContent {
+    //position: relative;
+    margin-left: auto;
+    margin-bottom: 15%;
+    margin-right: 10%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    border-radius: 10%;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 2px gray;
+    //padding: 25px;
+    .point {
+      cursor: pointer;
+      height: 5vh;
+      width: 100%;
+      background-color: white;
+      text-align: center;
+      padding: 1vh;
+      border-radius: 10px;
+
+      &.active {
+        background-color: #FFF7F4;
+      }
+    }
+  }
+
+  &.active {
+    display: flex;
+    align-items: center;
+    //display: none;
+  }
+}
+

@@ -12,10 +12,11 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import cartPriceReducer from './cartSlice';
-
+import pizzaSortReducer from './pizzaSortSlice'
 const rootReducer = combineReducers(
     {
         cart: cartPriceReducer,
+        sort: pizzaSortReducer
         // cartCounter: cart
     }
 );

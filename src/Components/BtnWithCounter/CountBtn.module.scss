@@ -1,0 +1,88 @@
+
+%templPlusLine {
+  content: ' ';
+  position: absolute;
+  display: block;
+  border-radius: 50px;
+  background-color: white;
+}
+
+%templPlusLineBefore {
+  width: 12px;
+  height: 2.5px;
+  top: 44%;
+  left: 18%;
+}
+
+%templPlusLineAfter {
+  height: 12px;
+  width: 2.5px;
+  left: 45%;
+  top: 19%;
+}
+
+.btnWrap {
+  border: #FE5F1E 1px solid;
+  height: 40px;
+  width: 130px;
+  background-color: #FE5F1E;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &.active {
+    background-color: white;
+    color: #FE5F1E;
+  }
+
+  .plus {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    margin-right: 3%;
+
+    &::before {
+      @extend %templPlusLine;
+      @extend %templPlusLineBefore
+    }
+
+    &::after {
+      @extend %templPlusLine;
+      @extend %templPlusLineAfter
+    }
+
+    &.active {
+      &::before {
+        @extend %templPlusLine;
+        @extend %templPlusLineBefore;
+        background-color: #FE5F1E;
+      }
+
+      &::after {
+        @extend %templPlusLine;
+        @extend %templPlusLineAfter;
+        background-color: #FE5F1E;
+      }
+    }
+  }
+  .count {
+    background-color: #FE5F1E;
+    border-radius: 50px;
+    color: white;
+    min-width: 23px;
+    min-height: 23px;
+    //font-size: 13px;
+    text-align: center;
+    //padding-top: 1px;
+    padding: 1px 1px;
+    //padding-left: 1px;
+    //pa
+    margin-left: 3%;
+  }
+}
