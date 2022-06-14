@@ -1,0 +1,16 @@
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 10%;
+  align-items: center;
+
+  p {
+    color: #B6B6B6;
+  }
+
+  img {
+    margin: 6% 0;
+    width: 50%;
+  }
+}

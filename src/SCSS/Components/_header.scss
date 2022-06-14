@@ -12,11 +12,21 @@ header {
 
     &__img {
       cursor: pointer;
-      height: 55px;
-      width: 55px;
+      max-height: 55px;
+      max-width: 55px;
+      width: 20%;
+      height: 5vw;
+      //width: 5vw;
+      //width: 30%;
+      //height: 30%;
+      //height: 1vw;
 
       img {
+        //max-height: 55px;
+        //max-width: 55px;
         height: 100%;
+        //height: auto;
+        //width: auto;
         width: 100%;
       }
     }
@@ -24,18 +34,23 @@ header {
     &__text {
       cursor: pointer;
       margin-left: 5%;
-      line-height: 26px;
-      font-size: 24px;
+      //line-height: 26px;
+      line-height: 2.1vw;
+      //font-size: 24px;
+      font-size: 2vw;
       text-transform: uppercase;
 
       span {
-        font-size: 16px;
+        //font-size: 16px;
+        font-size: 1.4vw;
       }
     }
 
   }
   .info {
+    font-size: 1.2vw;
     background-color: #FE5F1E;
+    //width: 12vw;
     width: 15%;
     border-radius: 50px;
     display: flex;
@@ -45,6 +60,7 @@ header {
     align-items: center;
     color: white;
     text-align: center;
+    //max-height: 55px;
     hr {
       width: 0.5%;
       border: none;
@@ -70,9 +86,31 @@ header {
       img {
         position: absolute;
         top: 0;
-        left: 15%;
+        left: 10%;
+        height: 100%;
+        //width: 100%;
       }
       //background-color: #ded0cc;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  header{
+    .logo {
+      width: 70%;
+      &__text {
+        margin: 0;
+        font-size: 3vw;
+        line-height: 3vw;
+        span {
+          font-size: 2vw;
+        }
+      }
+    }
+    .info{
+      width: 25%;
+      font-size: 1.8vw;
     }
   }
 }

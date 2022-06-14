@@ -1,11 +1,17 @@
-import React, {useMemo} from 'react';
-import {cartInfo, decrement, increment, removeItem} from "../store/cartSlice";
+import React from 'react';
+import {decrement, increment, removeItem} from "../store/cartSlice";
 import {useDispatch, useSelector} from "react-redux";
 
-const CartPizzaList = ({updateInfo, ...props}) => {
+const CartPizzaList = ({updateInfo}) => {
     const cartItems = useSelector(state => state.cart.cartItems);
     const dispatch = useDispatch();
-
+    const dough = (pizza) => {
+      switch (pizza.size) {
+          case 26: return 'тонкое'
+          case 30: return 'среднее'
+          case 40: return 'толстое'
+      }
+    }
     return (
         <div className="pizzas-list" onClick={updateInfo}>
             {cartItems.map((pizza, index) =>
@@ -13,7 +19,7 @@ const CartPizzaList = ({updateInfo, ...props}) => {
                     <img src={pizza.imageUrl} alt=""/>
                     <div className="pizza__title">
                         <h4>{pizza.title}</h4>
-                        <span>{pizza.type === 0 ? 'тонкое ' : 'толстое '} тесто, {pizza.size} см.</span>
+                        <span>{dough(pizza)} тесто, {pizza.size} см.</span>
                     </div>
                     <div className="pizza__counter">
                         <div className="pizza__counter-btn" onClick={() =>

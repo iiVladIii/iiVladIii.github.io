@@ -8,23 +8,30 @@
 }
 
 %templPlusLineBefore {
-  width: 12px;
-  height: 2.5px;
+  //width: 12px;
+  width: 0.8vw;
+  //height: 2.5px;
+  height: 0.18vw;
   top: 44%;
   left: 18%;
 }
 
 %templPlusLineAfter {
-  height: 12px;
-  width: 2.5px;
+  //height: 12px;
+  height: 0.8vw;
+  width: 0.18vw;
+  //width: 2.5px;
   left: 45%;
   top: 19%;
 }
 
 .btnWrap {
+  font-size: 1.15vw;
   border: #FE5F1E 1px solid;
-  height: 40px;
-  width: 130px;
+  //height: 40px;
+  height: 3vw;
+  //width: 130px;
+  width: 9.5vw;
   background-color: #FE5F1E;
   border-radius: 50px;
   cursor: pointer;
@@ -42,8 +49,10 @@
   }
 
   .plus {
-    width: 18px;
-    height: 18px;
+    //width: 18px;
+    //height: 18px;
+    width: 1.2vw;
+    height: 1.2vw;
     position: relative;
     margin-right: 3%;
 
@@ -71,12 +80,15 @@
       }
     }
   }
+
   .count {
     background-color: #FE5F1E;
     border-radius: 50px;
     color: white;
-    min-width: 23px;
-    min-height: 23px;
+    //min-width: 23px;
+    //min-height: 23px;
+    width: 1.8vw;
+    height: 1.8vw;
     //font-size: 13px;
     text-align: center;
     //padding-top: 1px;
@@ -84,5 +96,41 @@
     //padding-left: 1px;
     //pa
     margin-left: 3%;
+  }
+
+  &:hover {
+    opacity: .9;
+  }
+}
+
+@media (max-width: 767px) {
+  %templPlusLineBefore {
+    //width: 12px;
+    width: 2vw;
+    //height: 2.5px;
+    height: 0.48vw;
+    top: 44%;
+    left: -40%;
+  }
+
+  %templPlusLineAfter {
+    //height: 12px;
+    height: 2vw;
+    width: 0.48vw;
+    //width: 2.5px;
+    left: 25%;
+    top: -20%;
+  }
+  .btnWrap {
+    font-size: 2.2vw;
+    width: 50%;
+    height: 150%;
+
+    .count {
+      width: 15%;
+      height: 50%;
+      padding: 0;
+      font-size: 1.8vw;
+    }
   }
 }

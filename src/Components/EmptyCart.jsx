@@ -1,8 +1,8 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
+
+import MyButton from "./MyButton/MyButton";
 
 const EmptyCart = () => {
-    const navigate = useNavigate()
     return (
         <div className="cart__wrap">
             <div className="empty-cart">
@@ -10,7 +10,7 @@ const EmptyCart = () => {
                 <p>Вероятней всего, вы не заказывали ещё пиццу.</p>
                 <p>Для того, чтобы заказать пиццу, перейди на главную страницу.</p>
                 <img src="./img/empty-cart.png" alt="empty-cart-picture"/>
-                <div className="back-btn" onClick={() => navigate('/main')}>Вернуться назад</div>
+                <MyButton way={'/main'} type={2}>Вернуться назад</MyButton>
             </div>
         </div>
     );

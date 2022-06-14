@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {addNewItem} from "../store/cartSlice";
 import CountBtn from "./BtnWithCounter/CountBtn";
 

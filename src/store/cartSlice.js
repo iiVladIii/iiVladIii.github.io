@@ -77,7 +77,7 @@ const cartSlice = createSlice({
                 });
                 state.cartCounter = count;
                 state.cartPrice = price
-                console.log(count);
+                // console.log(count);
             },
             removeItem(state, action) {
                 const item = action.payload

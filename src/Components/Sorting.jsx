@@ -1,8 +1,8 @@
-import {React, useState} from 'react';
+import {useState} from 'react';
 import Popup from "./Popup/Popup";
 import {useSelector} from "react-redux";
 
-const Sorting = ({setCategory, ...props}) => {
+const Sorting = ({setCategory}) => {
     const categories = ['Все', 'Мясные', 'Вегетерианские', 'Гриль', 'Острые', 'Закрытые'];
     const [modal, setModal] = useState(false)
     const variables = ['Популярности (DESC)', 'Популярности (ASC)', 'Цене (DESC)', 'Цене (ASC)', 'Алфавиту (DESC)', 'Алфавиту (ASC)'];
@@ -18,6 +18,14 @@ const Sorting = ({setCategory, ...props}) => {
                 case 4: return variables[4]
                 case 5: return variables[5]
             }
+    }
+
+    const classes = () => {
+     if (modal) {
+         return ['sort', 'active']
+     }   else {
+         return ['sort']
+     }
     }
 
     const [activeCategory, setActiveCategory] = useState(0);
@@ -39,7 +47,7 @@ const Sorting = ({setCategory, ...props}) => {
                     )}
                 </ul>
             </div>
-            <div className="sort" onClick={()=> setModal(true)}>
+            <div className={classes().join(' ')} onClick={()=> setModal(true)}>
                 Сортировка по: {sortText()}
             </div>
             <Popup visible={modal} setVisible={setModal} variables={variables}/>

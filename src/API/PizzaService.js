@@ -12,7 +12,7 @@ export default class PizzaService {
     const response = await axios.get(`https://${key}.mockapi.io/items?page=${page}&limit=${limit}`)
     return response.data
   }
-  static async getSortPizzas(category, limit, page, sortBy, order) {
+  static async getSortPizzas(category, limit, page, sortBy) {
     const response = await axios.get(`https://${key}.mockapi.io/items?page=${page}&limit=${limit}&category=${category}&sortBy=${sortBy}`)
     return response.data
   }

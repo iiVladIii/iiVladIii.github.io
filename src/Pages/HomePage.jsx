@@ -3,10 +3,8 @@ import Loader from "../Components/Loader/Loader";
 import PizzaCard from "../Components/PizzaCard";
 import {useEffect, useState} from "react";
 import {useFetching} from "../hooks/useFetching";
-import axios from "axios";
 import Sorting from "../Components/Sorting";
 import Header from "../Components/Header";
-
 import {useDispatch, useSelector} from 'react-redux';
 import {cartInfo} from "../store/cartSlice";
 import PizzaService from "../API/PizzaService";

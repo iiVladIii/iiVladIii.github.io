@@ -4,24 +4,23 @@ import {useDispatch, useSelector} from "react-redux";
 import {cartInfo, clearCart} from "../store/cartSlice";
 import EmptyCart from "../Components/EmptyCart";
 import CartPizzaList from "../Components/CartPizzaList";
-import {useNavigate} from "react-router-dom";
+import MyButton from "../Components/MyButton/MyButton";
 
 const CartPage = () => {
     const cartItems = useSelector(state => state.cart.cartItems);
-    const cartCounter = useSelector(state => state.cart.cartCounter)
-    const cartPrice = useSelector(state => state.cart.cartPrice)
+    const cartCounter = useSelector(state => state.cart.cartCounter);
+    const cartPrice = useSelector(state => state.cart.cartPrice);
     const dispatch = useDispatch();
-    const navigate = useNavigate()
 
     const clearCartConfirm = () => {
         if (window.confirm('Очистить корзину?')) {
-            dispatch(clearCart())
-        };
+            dispatch(clearCart());
+        }
     };
 
     const updateInfo = () => {
-        dispatch(cartInfo())
-    }
+        dispatch(cartInfo());
+    };
     return (
         <div className="cart">
             <Header phrase={'Самая реактивная пицца'}/>
@@ -38,11 +37,16 @@ const CartPage = () => {
                     <CartPizzaList updateInfo={updateInfo}/>
                     <div className="total">
                         <div className={'total__count'}>Всего пицц: <span>{cartCounter} шт.</span></div>
-                        <div className={'total__price'}>Сумма заказа: <span>{cartPrice} ₽</span> </div>
+                        <div className={'total__price'}>Сумма заказа: <span>{cartPrice} ₽</span></div>
+                    </div>
+                    <div className="btns">
+                        <MyButton type={0} way={'/main'}>Вернуться назад</MyButton>
+                        <MyButton type={1}>Оплатить сейчас</MyButton>
                     </div>
                 </div>
                 : <EmptyCart/>
             }
+            <div className="home-wrap"></div>
         </div>
     );
 };

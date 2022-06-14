@@ -2,9 +2,13 @@
   margin-top: 5vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 35px;
-  grid-row-gap: 65px;
+  //grid-column-gap: 35px;
+  grid-column-gap: 2vw;
+  grid-row-gap: 3vw;
+  //grid-row-gap: 65px;
 }
-.home-wrap {
-  width: 100%;
+@media (max-width: 767px) {
+  .pizzas {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

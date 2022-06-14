@@ -4,7 +4,7 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {setSortValue} from "../../store/pizzaSortSlice";
 
-const Popup = ({visible, setVisible, variables, ...props}) => {
+const Popup = ({visible, setVisible, variables}) => {
     const dispatch = useDispatch()
 
     const [activeCategory, setActiveCategory] = useState(0);
@@ -13,7 +13,7 @@ const Popup = ({visible, setVisible, variables, ...props}) => {
 
     if (visible) {
         rootClasses.push(cl.active);
-        let listener = function (e) {
+        let listener = function () {
             setVisible(false);
             window.removeEventListener('scroll', listener, false);
         };

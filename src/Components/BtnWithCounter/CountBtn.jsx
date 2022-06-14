@@ -2,7 +2,7 @@ import React, {useEffect, useMemo, useState} from 'react';
 import cl from './CountBtn.module.scss';
 import {useSelector} from "react-redux";
 
-const CountBtn = ({addToCart, pizza, children, ...props}) => {
+const CountBtn = ({addToCart, pizza, children}) => {
     const cartItems = useSelector(state => state.cart.cartItems);
     const [btnStyles, setBtnStyles] = useState([cl.btnWrap]);
     const [plusStyles, setPlusStyles] = useState([cl.plus]);

@@ -1,8 +1,7 @@
-@import "SCSS/Components/header";
-@import "SCSS/Components/sorting";
-@import "SCSS/Components/pizzas-list";
-@import "SCSS/Components/pizza-card";
-@import "SCSS/Pages/cart-page";
+@import "./SCSS/Components/header";
+@import "./SCSS/Pages/cart-page";
+@import "./SCSS/Pages/home-page";
+
 .App {
   width: 90%;
   display: flex;
@@ -13,6 +12,7 @@
   background-color: #ffff;
   border-radius: 20px;
   padding: 2.5vw;
+  //font-size: 1.5vw;
 }
 .content {
   padding-top: 1.5vw;
