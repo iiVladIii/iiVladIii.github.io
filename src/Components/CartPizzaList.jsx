@@ -5,13 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 const CartPizzaList = ({updateInfo}) => {
     const cartItems = useSelector(state => state.cart.cartItems);
     const dispatch = useDispatch();
-    const dough = (pizza) => {
-      switch (pizza.size) {
-          case 26: return 'тонкое'
-          case 30: return 'среднее'
-          case 40: return 'толстое'
-      }
-    }
+
     return (
         <div className="pizzas-list" onClick={updateInfo}>
             {cartItems.map((pizza, index) =>
@@ -19,7 +13,7 @@ const CartPizzaList = ({updateInfo}) => {
                     <img src={pizza.imageUrl} alt=""/>
                     <div className="pizza__title">
                         <h4>{pizza.title}</h4>
-                        <span>{dough(pizza)} тесто, {pizza.size} см.</span>
+                        <span>{pizza.type === 0 ?'толстое' : 'тонкое'} тесто, {pizza.size} см.</span>
                     </div>
                     <div className="pizza__counter">
                         <div className="pizza__counter-btn" onClick={() =>
