@@ -1,12 +1,12 @@
 import React from 'react';
 import cl from './Popup.module.scss';
-import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setSortValue} from "../../store/pizzaSortSlice";
 
 const Popup = ({visible, setVisible, variables}) => {
     const dispatch = useDispatch()
     const sortValue = useSelector(state => state.sort.sortValue)
+
     const activeCategoryStyles = [cl.point, cl.active];
     const rootClasses = [cl.popup];
 
