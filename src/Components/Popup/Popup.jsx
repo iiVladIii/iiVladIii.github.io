@@ -1,13 +1,12 @@
 import React from 'react';
 import cl from './Popup.module.scss';
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setSortValue} from "../../store/pizzaSortSlice";
 
 const Popup = ({visible, setVisible, variables}) => {
     const dispatch = useDispatch()
-
-    const [activeCategory, setActiveCategory] = useState(0);
+    const sortValue = useSelector(state => state.sort.sortValue)
     const activeCategoryStyles = [cl.point, cl.active];
     const rootClasses = [cl.popup];
 
@@ -21,7 +20,6 @@ const Popup = ({visible, setVisible, variables}) => {
     }
 
     const main = (index) => {
-        setActiveCategory(index);
         dispatch(setSortValue(index))
         setVisible(false)
     };
@@ -29,7 +27,7 @@ const Popup = ({visible, setVisible, variables}) => {
         <div className={rootClasses.join(' ')} onClick={() => setVisible(false)}>
             <div className={cl.popupContent}>
                 {variables.map((el, index) =>
-                    <div className={activeCategory === index ? activeCategoryStyles.join(' ') : cl.point} key={index}
+                    <div className={sortValue === index ? activeCategoryStyles.join(' ') : cl.point} key={index}
                          onClick={(event) => {
                              main(index);
                              event.stopPropagation();
