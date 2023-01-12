@@ -8,6 +8,7 @@ import Header from "../Components/Header";
 import {useDispatch, useSelector} from 'react-redux';
 import {cartInfo} from "../store/cartSlice";
 import PizzaService from "../API/PizzaService";
+import MyButton from "../Components/MyButton/MyButton";
 
 
 const HomePage = () => {
