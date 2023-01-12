@@ -11,7 +11,7 @@ const Header = ({ phrase ,cartPrice, cartCounter }) => {
                   <img src="./img/logo.svg" alt=""/>
                 </div>
                 <div className="logo__text">
-                    React Pizza<br/>
+                    Pizza<br/>
                     <span>{phrase}</span>
                 </div>
             </div>
