@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import Loader from "../Components/Loader/Loader";
 import PizzaCard from "../Components/PizzaCard";
 import {useEffect, useState} from "react";
@@ -8,7 +8,6 @@ import Header from "../Components/Header";
 import {useDispatch, useSelector} from 'react-redux';
 import {cartInfo} from "../store/cartSlice";
 import PizzaService from "../API/PizzaService";
-import MyButton from "../Components/MyButton/MyButton";
 
 
 const HomePage = () => {
@@ -59,15 +58,14 @@ const HomePage = () => {
         }
     };
 
-    const newPage = (index) => {
-        console.log('page');
-        switch (index) {
-            case 1:
+    const onPage = (str) => {
+        switch (str) {
+            case 'next':
                 if (page < maxPage) {
                     setPage(page + 1);
                 }
                 break;
-            case -1:
+            case 'prev':
                 if (page > 1) {
                     setPage(page - 1);
                 }
@@ -106,14 +104,11 @@ const HomePage = () => {
                     )}
                 </div>
             }
-            <button onClick={() => {
-                newPage(-1);
-            }}>prev
-            </button>
-            <button onClick={() => {
-                newPage(1);
-            }}>next
-            </button>
+            <div className="btnWrap">
+                <button className={'pagBtn'} onClick={() => onPage('prev')}>Назад</button>
+                <button className={'pagBtn'} onClick={() => onPage('next')}>Далее</button>
+            </div>
+
         </div>
     );
 };
